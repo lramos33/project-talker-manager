@@ -10,18 +10,26 @@ const TALKERS_FILE = './talker.json';
 
 // <-- REQUISITO 01 -->
 app.get('/talker', async (_req, res, _next) => {
-  const talkers = JSON.parse(await fs.readFile(TALKERS_FILE));
-  if (talkers.length === 0) return res.status(HTTP_OK_STATUS).send([]);
-  res.status(HTTP_OK_STATUS).json(talkers);
+  const talkersList = JSON.parse(await fs.readFile(TALKERS_FILE));
+
+  if (talkersList.length === 0) {
+    return res.status(HTTP_OK_STATUS).send([]);
+  }
+
+  res.status(HTTP_OK_STATUS).json(talkersList);
 });
 
 // <-- REQUISITO 02 -->
-app.get('/talker/:id', async (req, res, next) => {
+app.get('/talker/:id', async (req, res, _next) => {
   const { id } = req.params;
-  const talkers = JSON.parse(await fs.readFile(TALKERS_FILE));
-  const talker = talkers.find((talker) => talker.id === parseInt(id));
-  if (!talker) return res.status(HTTP_NOT_FOUND_STATUS).json({ message: "Pessoa palestrante não encontrada" });
-  res.status(HTTP_OK_STATUS).json(talker)
+  const talkersList = JSON.parse(await fs.readFile(TALKERS_FILE));
+  const talker = talkersList.find((t) => t.id === parseInt(id, 10));
+
+  if (!talker) {
+    res.status(HTTP_NOT_FOUND_STATUS).json({ message: 'Pessoa palestrante não encontrada' });
+  }
+  
+  res.status(HTTP_OK_STATUS).json(talker);
 });
 
 // <-- ENDPOINT AVALIADOR -->
