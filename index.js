@@ -16,10 +16,8 @@ const E_REGEX = /(.+)@(.+){2,}\.(.+){2,}/;
 app.get('/talker', async (_req, res, _next) => {
   const talkersList = JSON.parse(await fs.readFile(TALKERS_FILE));
 
-  if (talkersList.length === 0) {
-    return res.status(HTTP_OK).send([]);
-  }
-
+  if (talkersList.length === 0) return res.status(HTTP_OK).send([]);
+  
   res.status(HTTP_OK).json(talkersList);
 });
 
@@ -30,7 +28,7 @@ app.get('/talker/:id', async (req, res, _next) => {
   const talker = talkersList.find((t) => t.id === parseInt(id, 10));
 
   if (!talker) {
-    res.status(HTTP_NOT_FOUND).json({ message: 'Pessoa palestrante não encontrada' });
+    return res.status(HTTP_NOT_FOUND).json({ message: 'Pessoa palestrante não encontrada' });
   }
 
   res.status(HTTP_OK).json(talker);
@@ -51,8 +49,10 @@ app.post('/login', (req, res, _next) => {
   const { email, password } = req.body;
   const emailError = validateEmail(email);
   const passwordError = validatePassword(password);
+
   if (emailError) return res.status(HTTP_BAD_REQUEST).json(emailError);
   if (passwordError) return res.status(HTTP_BAD_REQUEST).json(passwordError);
+
   res.status(HTTP_OK).json({ token: '7mqaVRXJSp886CGr' });
 });
 
