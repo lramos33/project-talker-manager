@@ -8,6 +8,7 @@ const validateToken = require('./middlewares/validateToken');
 const validateBodyTalker = require('./middlewares/validateBodyTalker');
 const addNewTalker = require('./middlewares/addNewTalker');
 const editTalker = require('./middlewares/editTalker');
+const deleteTalker = require('./middlewares/deleteTalker');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const app = express();
@@ -30,6 +31,9 @@ app.post('/talker', validateToken, validateBodyTalker, addNewTalker);
 
 // <-- REQUISITO 05 -->
 app.put('/talker/:id', validateToken, validateBodyTalker, editTalker);
+
+// <-- REQUISITO 06 -->
+app.delete('/talker/:id', validateToken, deleteTalker);
 
 // Tratamento de erros
 app.use(errorMiddleware);
