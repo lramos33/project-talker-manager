@@ -26,11 +26,15 @@ const validatePassword = (password, res) => {
   }
 };
 
-const validateLogin = (req, res, _next) => {
-  const { email, password } = req.body;
-  validateEmail(email, res);
-  validatePassword(password, res);
-  res.status(HTTP_OK).json({ token: TOKEN });
+const validateLogin = (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    validateEmail(email, res);
+    validatePassword(password, res);
+    return res.status(HTTP_OK).json({ token: TOKEN });
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = validateLogin;

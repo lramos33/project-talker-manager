@@ -30,7 +30,7 @@ const validateTalkerAge = (age, res) => {
 };
 
 const validateTalkerTalk = (talk, res) => {
-  if (!talk || !talk.watchedAt || !talk.rate) {
+  if (!talk || !talk.watchedAt || talk.rate === undefined) {
     return res.status(HTTP_BAD_REQUEST).json(TALK_REQUIRED);
   }
 };
@@ -48,13 +48,17 @@ const validateTalkerRate = (talk, res) => {
 };
 
 const validateBodyTalker = (req, res, next) => {
-  const { name, age, talk } = req.body;
-  validateTalkerName(name, res);
-  validateTalkerAge(age, res);
-  validateTalkerTalk(talk, res);
-  validateTalkerWatchedAt(talk, res);
-  validateTalkerRate(talk, res);
-  next();
+  try {
+    const { name, age, talk } = req.body;
+    validateTalkerName(name, res);
+    validateTalkerAge(age, res);
+    validateTalkerTalk(talk, res);
+    validateTalkerWatchedAt(talk, res);
+    validateTalkerRate(talk, res);
+    next();
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = validateBodyTalker;
