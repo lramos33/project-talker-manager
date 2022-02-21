@@ -9,7 +9,7 @@ const addNewTalker = async (req, res, next) => {
     const talkersList = JSON.parse(await fs.readFile(TALKERS_FILE));
     const newTalker = { id: talkersList.length + 1, name, age, talk };
     talkersList.push(newTalker);
-    fs.writeFile(TALKERS_FILE, JSON.stringify(talkersList));
+    await fs.writeFile(TALKERS_FILE, JSON.stringify(talkersList));
     return res.status(HTTP_CREATED).json(newTalker);
   } catch (error) {
     next(error);
