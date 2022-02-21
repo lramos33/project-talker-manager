@@ -15,7 +15,6 @@ const errorMiddleware = require('./middlewares/errorMiddleware');
 const app = express();
 app.use(bodyParser.json());
 
-const HTTP_OK = 200;
 const PORT = '3000';
 
 // <-- REQUISITO 01 -->
