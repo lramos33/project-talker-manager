@@ -48,7 +48,7 @@ Nesse projeto foi desenvolvido uma API de um CRUD (Create, Read, Update e Delete
 
 ## 📝 Requisitos do projeto
 
-### 1. Crie o endpoint GET `/talker`
+- [x] 1. Crie o endpoint GET `/talker`
 
 - O endpoint deve retornar um array com todas as pessoas palestrantes cadastradas. Devendo retornar o `status 200`, com o seguinte corpo:
 
@@ -84,7 +84,7 @@ Nesse projeto foi desenvolvido uma API de um CRUD (Create, Read, Update e Delete
 - Caso não exista nenhuma pessoa palestrante cadastrada o endpoint deve retornar um array vazio e o `status 200`.
 
 ##
-### 2. Crie o endpoint GET `/talker/:id`
+- [x] 2. Crie o endpoint GET `/talker/:id`
 
 - O endpoint deve retornar uma pessoa palestrante com base no id da rota. Devendo retornar o `status 200` ao fazer uma requisição `/talker/1`, com o seguinte corpo:
 
@@ -106,7 +106,7 @@ Nesse projeto foi desenvolvido uma API de um CRUD (Create, Read, Update e Delete
   ```
 
 ##
-### 3. Crie o endpoint POST `/login`
+- [x] 3. Crie o endpoint POST `/login`
 
 - O endpoint deve ser capaz de retornar um token aleatório de 16 caracteres que deverá ser utilizado nas demais requisições.
 
@@ -164,7 +164,7 @@ Nesse projeto foi desenvolvido uma API de um CRUD (Create, Read, Update e Delete
     ```
     
 ##
-### 4. Crie o endpoint POST `/talker`
+- [x] 4. Crie o endpoint POST `/talker`
 
 - O endpoint deve ser capaz de adicionar uma nova pessoa palestrante ao seu arquivo;
 
@@ -282,7 +282,7 @@ Nesse projeto foi desenvolvido uma API de um CRUD (Create, Read, Update e Delete
   ```
 
 ##
-### 5. Crie o endpoint PUT `/talker/:id`
+- [x] 5. Crie o endpoint PUT `/talker/:id`
 
 - O endpoint deve ser capaz de editar uma pessoa palestrante com base no id da rota, sem alterar o id registrado.
 
@@ -400,7 +400,7 @@ Nesse projeto foi desenvolvido uma API de um CRUD (Create, Read, Update e Delete
   ```
 
 ##
-### 6. Crie o endpoint DELETE `/talker/:id`
+- [x] 6. Crie o endpoint DELETE `/talker/:id`
 
 - A requisição deve ter o token de autenticação nos headers, no campo `authorization`.
 
@@ -423,7 +423,7 @@ Nesse projeto foi desenvolvido uma API de um CRUD (Create, Read, Update e Delete
 - O endpoint deve deletar uma pessoa palestrante com base no id da rota. Devendo retornar o `status 204`, sem conteúdo na resposta.
 
 ##
-### 7. Crie o endpoint GET `/talker/search?q=searchTerm`
+- [x] 7. Crie o endpoint GET `/talker/search?q=searchTerm`
 
 - O endpoint deve retornar um array de palestrantes que contenham em seu nome o termo pesquisado no queryParam da URL. Devendo retornar o `status 200`, com o seguinte corpo:
 
