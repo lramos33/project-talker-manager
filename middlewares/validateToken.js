@@ -2,7 +2,6 @@ const TOKEN_NOT_FOUND = { message: 'Token não encontrado' };
 const INVALID_TOKEN = { message: 'Token inválido' };
 
 const HTTP_UNAUTHORIZED = 401;
-const TOKEN = '7mqaVRXJSp886CGr';
 
 const validateToken = (req, res, next) => {
   try {
@@ -10,7 +9,7 @@ const validateToken = (req, res, next) => {
     if (!authorization || authorization === '') {
       return res.status(HTTP_UNAUTHORIZED).json(TOKEN_NOT_FOUND);
     }
-    if (authorization !== TOKEN) {
+    if (authorization.length !== 16) {
       return res.status(HTTP_UNAUTHORIZED).json(INVALID_TOKEN);
     }
     next();

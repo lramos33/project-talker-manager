@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 const EMAIL_REQUIRED = { message: 'O campo "email" é obrigatório' };
 const INVALID_EMAIL = { message: 'O "email" deve ter o formato "email@email.com"' };
 const PASSWORD_REQUIRED = { message: 'O campo "password" é obrigatório' };
@@ -6,7 +8,10 @@ const INVALID_PASSWORD = { message: 'O "password" deve ter pelo menos 6 caracter
 const HTTP_OK = 200;
 const HTTP_BAD_REQUEST = 400;
 const EMAIL_REGEX = /(.+)@(.+){2,}\.(.+){2,}/;
-const TOKEN = '7mqaVRXJSp886CGr';
+
+const generateToken = () => {
+  return crypto.randomBytes(8).toString('hex');
+};
 
 const validateEmail = (email, res) => {
   if (!email || email === '') {
@@ -31,7 +36,7 @@ const validateLogin = (req, res, next) => {
     const { email, password } = req.body;
     validateEmail(email, res);
     validatePassword(password, res);
-    return res.status(HTTP_OK).json({ token: TOKEN });
+    return res.status(HTTP_OK).json({ token: generateToken() });
   } catch (error) {
     next(error);
   }
