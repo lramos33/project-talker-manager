@@ -42,11 +42,6 @@ app.delete('/talker/:id', validateToken, deleteTalker);
 // Tratamento de erros
 app.use(errorMiddleware);
 
-// <-- ENDPOINT AVALIADOR -->
-app.get('/', (_request, response) => {
-  response.status(HTTP_OK).send();
-});
-
 app.listen(PORT, () => {
   console.log('Online');
 });
