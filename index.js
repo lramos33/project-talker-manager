@@ -9,6 +9,7 @@ const validateBodyTalker = require('./middlewares/validateBodyTalker');
 const addNewTalker = require('./middlewares/addNewTalker');
 const editTalker = require('./middlewares/editTalker');
 const deleteTalker = require('./middlewares/deleteTalker');
+const searchTalker = require('./middlewares/searchTalker');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const app = express();
@@ -19,6 +20,9 @@ const PORT = '3000';
 
 // <-- REQUISITO 01 -->
 app.get('/talker', getAllTalkers);
+
+// <-- REQUISITO 07 -->
+app.get('/talker/search', validateToken, searchTalker);
 
 // <-- REQUISITO 02 -->
 app.get('/talker/:id', getTalkerById);
