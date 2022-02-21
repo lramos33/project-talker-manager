@@ -1,6 +1,6 @@
 <h1 align="center">Project Talker Manager</h1>
 
-<p align="center">✔️ Concluded - 100%</p>
+<p align="center">✔️ Concluded</p>
 
 ## 💻 Instalando o projeto
 
